@@ -107,7 +107,8 @@ __BCIN="\[\033[38;5;236m\]"
 
 APS1=\
 "${debian_chroot:+($debian_chroot)}\
-$__CIN┌─\$(erro)[$__NONE$__BW\u\
+$__CIN┌─\$(erro)\$([ \j -ne 0 ] && echo -n \"(\j)\")\
+[$__NONE$__BW\u\
 $__BG@$__NONE\h:\
 $__BCIN\$(nobasename)$__NONE$__CIN]$__NONE\n\
 $__CIN└ᐅ$__NONE $__BB\W$__NONE\
