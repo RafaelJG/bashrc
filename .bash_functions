@@ -24,4 +24,7 @@ source ~/prog/shell/print_on_bashinit/init.sh
 #HEXDATE
 source ~/prog/shell/hexdate/hexdate.sh
 
+#nobasename
+source ~/prog/shell/nobasename/nobasename.sh
+
 #------------------------------------------------------------------#

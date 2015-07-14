@@ -40,6 +40,41 @@ case "$TERM" in
     xterm-color) color_prompt=yes;;
 esac
 
+#===========================================
+# Váriavies com as Cores
+#===========================================
+__NONE="\[\033[0m\]" # Eliminar as Cores, deixar padrão)
+ 
+## Cores de Fonte
+#__K="\[\033[0;30m\]" # Black (Preto)
+#__R="\[\033[0;31m\]" # Red (Vermelho)
+#__G="\[\033[0;32m\]" # Green (Verde)
+#__Y="\[\033[0;33m\]" # Yellow (Amarelo)
+#__B="\[\033[0;34m\]" # Blue (Azul)
+#__M="\[\033[0;35m\]" # Magenta (Vermelho Claro)
+#__C="\[\033[0;36m\]" # Cyan (Ciano - Azul Claro)
+#__W="\[\033[0;37m\]" # White (Branco)
+
+#__## Efeito Negrito (bold) e cores
+#__BK="\[\033[1;30m\]" # Bold+Black (Negrito+Preto)
+__BR="\[\033[1;31m\]" # Bold+Red (Negrito+Vermelho)
+__BG="\[\033[1;32m\]" # Bold+Green (Negrito+Verde)
+__BY="\[\033[1;33m\]" # Bold+Yellow (Negrito+Amarelo)
+__BB="\[\033[38;5;26m\]" # Bold+Blue (Negrito+Azul)
+#__BM="\[\033[1;35m\]" # Bold+Magenta (Negrito+Vermelho Claro)
+#__BC="\[\033[1;36m\]" # Bold+Cyan (Negrito+Ciano - Azul Claro)
+__BW="\[\033[1;37m\]" # Bold+White (Negrito+Branco)
+
+#__## Cores de fundo (backgroud)
+#__BGK="\[\033[40m\]" # Black (Preto)
+#__BGR="\[\033[41m\]" # Red (Vermelho)
+#__BGG="\[\033[42m\]" # Green (Verde)
+#__BGY="\[\033[43m\]" # Yellow (Amarelo)
+#__BGB="\[\033[44m\]" # Blue (Azul)
+#__BGM="\[\033[45m\]" # Magenta (Vermelho Claro)
+#__BGC="\[\033[46m\]" # Cyan (Ciano - Azul Claro)
+#__BGW="\[\033[47m\]" # White (Branco)
+
 # uncomment for a colored prompt, if the terminal has the capability; turned
 # off by default to not distract the user: the focus in a terminal window
 # should be on the output of commands, not on the prompt
@@ -56,8 +91,32 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
+# carrega meus apelidos e funcoes
+if [ -f ~/.bash_functions ]; then
+	. ~/.bash_functions
+fi
+################################
+#
+# PSI COM CORES
+#
+###############################
+
+#cinza
+__CIN="\[\033[38;5;250m\]"
+__BCIN="\[\033[38;5;236m\]"
+
+APS1=\
+"${debian_chroot:+($debian_chroot)}\
+$__CIN┌─[$__NONE$__BW\u\
+$__BG@$__NONE\h:\
+$__BCIN\$(nobasename)$__NONE$__CIN]$__NONE\n\
+$__CIN└ᐅ$__NONE $__BB\W$__NONE\$(cbranch \"$__CIN on $__BY\")$__BR \$$__NONE "
+
+
+##################################################
+
 if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]`cbranch @`\$ '
+    PS1="$APS1"
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
@@ -87,10 +146,7 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
-# carrega meus apelidos e funcoes
-if [ -f ~/.bash_functions ]; then
-	. ~/.bash_functions
-fi
+
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
@@ -102,4 +158,3 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-
