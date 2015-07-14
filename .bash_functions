@@ -27,4 +27,7 @@ source ~/prog/shell/hexdate/hexdate.sh
 #nobasename
 source ~/prog/shell/nobasename/nobasename.sh
 
+#eroooooooooooooooooooooooo
+source ~/prog/shell/erro/erro.sh
+
 #------------------------------------------------------------------#
