@@ -7,5 +7,5 @@
 ## Dependências que possam causar erros
 
 ```shell
-\# apt-get install xclip cowsay screenfetch fortune fortunes-mod fortunes-br fortunes-min fortunes-off
+# apt-get install xclip cowsay screenfetch fortune fortunes-mod fortunes-br fortunes-min fortunes-off
 ```
