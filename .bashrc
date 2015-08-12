@@ -91,10 +91,14 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
-# carrega meus apelidos e funcoes
-if [ -f ~/.bash_functions ]; then
-	. ~/.bash_functions
+#import function on .bash_function.d
+if [ -d ~/.bash_function.d ] ; then
+	for func in ~/.bash_function.d/*.sh
+	do
+		source "$func"
+	done
 fi
+
 ################################
 #
 # PSI COM CORES
@@ -112,7 +116,7 @@ $__CIN┌─\$(erro)\$([ \j -ne 0 ] && echo -n \"(\j)\")\
 $__BG@$__NONE\h:\
 $__BCIN\$(nobasename)$__NONE$__CIN]$__NONE\n\
 $__CIN└ᐅ$__NONE $__BB\W$__NONE\
-\$(cbranch \"$__CIN on $__BY\")$__BR \$$__NONE "
+\$(cbranch \"$__CIN on $__BY\") $__BCIN\$(backvim)$__BR\$$__NONE "
 
 
 ##################################################
@@ -145,10 +149,8 @@ export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quo
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 
 if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
+	. ~/.bash_aliases
 fi
-
-
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile

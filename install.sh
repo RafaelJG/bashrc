@@ -1,11 +1,11 @@
 #!/bin/bash
 
 BASHRC_PATH=~/.bashrc
-BASHF_PATH=~/.bash_functions
+BASHF_PATH=~/.bash_function.d
 BASHA_PATH=~/.bash_aliases
 
 backup(){
-	if [ -f "$1" ]; then
+	if [ -e "$1" ]; then
 		echo "$1 backup..."
 		mv -v "$1" "${1}.bk"
 	fi
@@ -13,7 +13,7 @@ backup(){
 
 install(){
 	cp -v .bashrc "$BASHRC_PATH"
-	cp -v .bash_functions "$BASHF_PATH"
+	cp -rv .bash_function.d "$BASHF_PATH"
 	cp -v .bash_aliases "$BASHA_PATH"
 	
 }
