@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source ~/prog/shell/vacadiz_fortune/vacadiz_fortune.sh
+source vacadiz_fortune.sh
 
 if [ $((RANDOM%10)) -eq 0 ]
 then
