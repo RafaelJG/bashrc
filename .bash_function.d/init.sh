@@ -14,9 +14,15 @@ oldpwd_init(){
 		export OLDPWD="$(cat /tmp/oldpwdh/oldpwd)"
 	fi
 }
-#################################
-
 oldpwd_init
+
+##SCREEN#########################
+if [ ! $STY ]
+then
+	screen -m
+fi
+
+##SCREENPLASH###################
 
 source .bash_function.d/vacadiz_fortune.sh
 if [ $((RANDOM%10)) -eq 0 ]

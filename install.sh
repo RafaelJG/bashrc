@@ -8,7 +8,7 @@ backup(){
 	if [ -e "$1" ]; then
 		if [ -d "${1}.bk" ]
 		then
-			rm -r "${1}.bk"
+			rm -vr "${1}.bk"
 		fi
 		echo "$1 backup..."
 		mv -v "$1" "${1}.bk"
