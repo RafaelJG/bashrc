@@ -6,6 +6,10 @@ BASHA_PATH=~/.bash_aliases
 
 backup(){
 	if [ -e "$1" ]; then
+		if [ -d "${1}.bk" ]
+		then
+			rm -r "${1}.bk"
+		fi
 		echo "$1 backup..."
 		mv -v "$1" "${1}.bk"
 	fi
@@ -19,7 +23,7 @@ install(){
 }
 
 backup "$BASHRC_PATH"
-backup "$BASHF_PATH"
+backup "$BASHF_PATH"/.bash_function.d
 backup "$BASHA_PATH"
 
 install
