@@ -8,7 +8,7 @@ backup(){
 	then
 		if [ -d "$path_to_backup".bk ]
 		then
-			rm -irv "$path_to_backup".bk
+			rm -rv "$path_to_backup".bk
 		fi
 		echo "$path_to_backup backup..."
 		mv -v "$path_to_backup" "$path_to_backup".bk
@@ -19,7 +19,7 @@ install(){
 	path_to_install="$HOME/$1"
 	if [ -d "$path_to_install" ]
 	then
-		rm -irv "$path_to_install"
+		rm -rv "$path_to_install"
 	fi
 	cp -vr "$1" "$path_to_install"
 }
