@@ -162,3 +162,9 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+##SCREEN#########################
+if [ ! $STY ]
+then
+	exec screen -RR 
+fi

@@ -16,11 +16,6 @@ oldpwd_init(){
 }
 oldpwd_init
 
-##SCREEN#########################
-if [ ! $STY ]
-then
-	screen -m
-fi
 
 ##SCREENPLASH###################
 
