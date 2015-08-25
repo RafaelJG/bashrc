@@ -124,13 +124,26 @@ $__CIN┌─\$(erro)\$([ \j -ne 0 ] && echo -n \"(\j)\")\
 $__BG@$__NONE\h:\
 $__BCIN\$(nobasename)$__NONE$__CIN]$__NONE\n\
 $__CIN└ᐅ$__NONE $__BB\W$__NONE\
-\$(cbranch \"$__CIN on $__BY\") $__BCIN\$(backvim)$__BR\$$__NONE "
+\$(cbranch \"$__CIN on $__BY\")$__BCIN\$(backvim)$__BR \\$ $__NONE"
 
+ROOT_PS1=\
+"${debian_chroot:+($debian_chroot)}\
+$__CIN┌─\$(erro)\$([ \j -ne 0 ] && echo -n \"(\j)\")\
+[$__NONE$__BR\u\
+$__BG@$__NONE\h:\
+$__BB\w$__NONE\
+\$(cbranch \"$__CIN on $__BY\")$__BCIN\$(backvim)$__BR$__CIN]$__NONE\n\
+$__CIN└ᐅ${__BCIN} Cê é o bichão memo ein doido?$__BR \\$ $__NONE"
 
 ##################################################
 
 if [ "$color_prompt" = yes ]; then
-    PS1="$APS1"
+	if [ "$UID" -eq 0 ]
+	then 
+		PS1="$ROOT_PS1"
+	else
+    		PS1="$APS1"
+	fi
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
