@@ -1,29 +1,32 @@
 #!/bin/bash
 
-BASHRC_PATH=~/.bashrc
-BASHF_PATH=~
-BASHA_PATH=~/.bash_aliases
+file_list=$(cat .installation_files|xargs)
 
 backup(){
-	if [ -e "$1" ]; then
-		if [ -d "${1}.bk" ]
+	path_to_backup="$HOME/$1"
+	if [ -e "$path_to_backup" ]
+	then
+		if [ -d "$path_to_backup".bk ]
 		then
-			rm -vr "${1}.bk"
+			rm -irv "$path_to_backup".bk
 		fi
-		echo "$1 backup..."
-		mv -v "$1" "${1}.bk"
+		echo "$path_to_backup backup..."
+		mv -v "$path_to_backup" "$path_to_backup".bk
 	fi
 }
 
 install(){
-	cp -v .bashrc "$BASHRC_PATH"
-	cp -rv .bash_function.d/ "$BASHF_PATH"
-	cp -v .bash_aliases "$BASHA_PATH"
-	
+	path_to_install="$HOME/$1"
+	if [ -d "$path_to_install" ]
+	then
+		rm -irv "$path_to_install"
+	fi
+	cp -vr "$1" "$path_to_install"
 }
 
-backup "$BASHRC_PATH"
-backup "$BASHF_PATH"/.bash_function.d
-backup "$BASHA_PATH"
-
-install
+for f in $file_list
+do
+	echo "Instalando $f========================"
+	backup "$f"
+	install "$f"
+done
