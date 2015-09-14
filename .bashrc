@@ -51,37 +51,38 @@ esac
 #===========================================
 # Váriavies com as Cores
 #===========================================
-__NONE="\[\033[0m\]" # Eliminar as Cores, deixar padrão)
+NENHUM="\[\033[0m\]" # Eliminar as Cores, deixar padrão)
  
 ## Cores de Fonte
-#__K="\[\033[0;30m\]" # Black (Preto)
-#__R="\[\033[0;31m\]" # Red (Vermelho)
-#__G="\[\033[0;32m\]" # Green (Verde)
-#__Y="\[\033[0;33m\]" # Yellow (Amarelo)
-#__B="\[\033[0;34m\]" # Blue (Azul)
-#__M="\[\033[0;35m\]" # Magenta (Vermelho Claro)
-#__C="\[\033[0;36m\]" # Cyan (Ciano - Azul Claro)
-#__W="\[\033[0;37m\]" # White (Branco)
+#PRETO="\[\033[0;30m\]" # Black (Preto)
+#VERMELHO="\[\033[0;31m\]" # Red (Vermelho)
+#VERDE="\[\033[0;32m\]" # Green (Verde)
+#AMARELO="\[\033[0;33m\]" # Yellow (Amarelo)
+#AZUL="\[\033[0;34m\]" # Blue (Azul)
+#MAGENTA="\[\033[0;35m\]" # Magenta (Vermelho Claro)
+#CIANO="\[\033[0;36m\]" # Cyan (Ciano - Azul Claro)
+BRANCO="\[\033[0;37m\]" # White (Branco)
+CINZA="$BRANCO\[\033[2m"
 
 #__## Efeito Negrito (bold) e cores
-#__BK="\[\033[1;30m\]" # Bold+Black (Negrito+Preto)
-__BR="\[\033[1;31m\]" # Bold+Red (Negrito+Vermelho)
-__BG="\[\033[1;32m\]" # Bold+Green (Negrito+Verde)
-__BY="\[\033[1;33m\]" # Bold+Yellow (Negrito+Amarelo)
-__BB="\[\033[38;5;26m\]" # Bold+Blue (Negrito+Azul)
-#__BM="\[\033[1;35m\]" # Bold+Magenta (Negrito+Vermelho Claro)
-#__BC="\[\033[1;36m\]" # Bold+Cyan (Negrito+Ciano - Azul Claro)
-__BW="\[\033[1;37m\]" # Bold+White (Negrito+Branco)
+#NPRETO="\[\033[1;30m\]" # Bold+Black (Negrito+Preto)
+NVERMELHO="\[\033[1;31m\]" # Bold+Red (Negrito+Vermelho)
+NVERDE="\[\033[1;32m\]" # Bold+Green (Negrito+Verde)
+NAMARELO="\[\033[1;33m\]" # Bold+Yellow (Negrito+Amarelo)
+NAZUL="\[\033[38;5;26m\]" # Bold+Blue (Negrito+Azul)
+NMAGENTA="\[\033[1;35m\]" # Bold+Magenta (Negrito+Vermelho Claro)
+#NCIANO="\[\033[1;36m\]" # Bold+Cyan (Negrito+Ciano - Azul Claro)
+#NBRANCO="\[\033[1;37m\]" # Bold+White (Negrito+Branco)
 
 #__## Cores de fundo (backgroud)
-#__BGK="\[\033[40m\]" # Black (Preto)
-#__BGR="\[\033[41m\]" # Red (Vermelho)
-#__BGG="\[\033[42m\]" # Green (Verde)
-#__BGY="\[\033[43m\]" # Yellow (Amarelo)
-#__BGB="\[\033[44m\]" # Blue (Azul)
-#__BGM="\[\033[45m\]" # Magenta (Vermelho Claro)
-#__BGC="\[\033[46m\]" # Cyan (Ciano - Azul Claro)
-#__BGW="\[\033[47m\]" # White (Branco)
+#BPRETO="\[\033[40m\]" # Black (Preto)
+#BVERMELHO="\[\033[41m\]" # Red (Vermelho)
+#BVERDE="\[\033[42m\]" # Green (Verde)
+#BAMARELO="\[\033[43m\]" # Yellow (Amarelo)
+#BAZUL="\[\033[44m\]" # Blue (Azul)
+#BMAGENTA="\[\033[45m\]" # Magenta (Vermelho Claro)
+#BCIANO="\[\033[46m\]" # Cyan (Ciano - Azul Claro)
+#BBRANCO="\[\033[47m\]" # White (Branco)
 
 # uncomment for a colored prompt, if the terminal has the capability; turned
 # off by default to not distract the user: the focus in a terminal window
@@ -113,39 +114,44 @@ fi
 #
 ###############################
 
-#cinza
-__CIN="\[\033[38;5;250m\]"
-__BCIN="\[\033[38;5;236m\]"
+first_c(){
+	echo "${1:0:1}"
+}
+
+if [ "$UID" -eq 0 ]
+then
+	S_COLOR="$NVERMELHO"
+else
+	S_COLOR="$NMAGENTA"
+fi
 
 APS1=\
 "${debian_chroot:+($debian_chroot)}\
-$__CIN┌─\$(erro)\$([ \j -ne 0 ] && echo -n \"(\j)\")\
-[$__NONE$__BW\u\
-$__BG@$__NONE\h:\
-$__BCIN\$(nobasename)$__NONE$__CIN]$__NONE\n\
-$__CIN└ᐅ$__NONE $__BB\W$__NONE\
-\$(cbranch \"$__CIN on $__BY\")$__BCIN\$(backvim)$__BR \\$ $__NONE"
+{\$(first_c \u)}$NVERDE@$NENHUM\h$CINZA:\$(nobasename)\n\
+$NENHUM${NAZUL}\W$NENHUM\$(cbranch \"${CINZA} on $NENHUM$NAMARELO\")\
+$NENHUM\$(backvim)$S_COLOR \\$ $NENHUM"
 
-ROOT_PS1=\
+APS1_sem_cor=\
 "${debian_chroot:+($debian_chroot)}\
-$__CIN┌─\$(erro)\$([ \j -ne 0 ] && echo -n \"(\j)\")\
-[$__NONE$__BR\u\
-$__BG@$__NONE\h:\
-$__BB\w$__NONE\
-\$(cbranch \"$__CIN on $__BY\")$__BCIN\$(backvim)$__BR$__CIN]$__NONE\n\
-$__CIN└ᐅ${__BCIN} Cê é o bichão memo ein doido?$__BR \\$ $__NONE"
+{\$(first_c \u)}@\h:\$(nobasename)\n\
+\W\$(cbranch \" on \")\
+\$(backvim) \\$ "
 
+
+unset BRANCO
+unset NAMARELO
+unset NMAGENTA
+unset NVERMELHO
+unset NAZUL
+unset CINZA
+unset NENHUM
 ##################################################
 
 if [ "$color_prompt" = yes ]; then
-	if [ "$UID" -eq 0 ]
-	then 
-		PS1="$ROOT_PS1"
-	else
-    		PS1="$APS1"
-	fi
+  	PS1="$APS1"
 else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+	#PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+	PS1="$APS1_sem_cor"
 fi
 unset color_prompt force_color_prompt
 
