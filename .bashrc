@@ -129,7 +129,7 @@ APS1=\
 "${debian_chroot:+($debian_chroot)}\
 {\$(first_c \u)}$NVERDE@$NENHUM\h$CINZA:\$(nobasename)\n\
 $NENHUM${NAZUL}\W$NENHUM\$(cbranch \"${CINZA} on $NENHUM$NAMARELO\")\
-$NENHUM\$(backvim)$S_COLOR \\$ $NENHUM"
+$CINZA\$(backvim)$NENHUM$S_COLOR \\$ $NENHUM"
 
 APS1_sem_cor=\
 "${debian_chroot:+($debian_chroot)}\
