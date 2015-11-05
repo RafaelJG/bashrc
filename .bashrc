@@ -62,7 +62,7 @@ NENHUM="\[\033[0m\]" # Eliminar as Cores, deixar padrão)
 #MAGENTA="\[\033[0;35m\]" # Magenta (Vermelho Claro)
 #CIANO="\[\033[0;36m\]" # Cyan (Ciano - Azul Claro)
 BRANCO="\[\033[0;37m\]" # White (Branco)
-CINZA="$BRANCO\[\033[2m"
+CINZA="\[\033[38;5;240m\]"
 
 #__## Efeito Negrito (bold) e cores
 #NPRETO="\[\033[1;30m\]" # Bold+Black (Negrito+Preto)
