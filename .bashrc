@@ -61,7 +61,11 @@ NENHUM="\[\033[0m\]" # Eliminar as Cores, deixar padrão)
 #MAGENTA="\[\033[0;35m\]" # Magenta (Vermelho Claro)
 #CIANO="\[\033[0;36m\]" # Cyan (Ciano - Azul Claro)
 BRANCO="\[\033[0;37m\]" # White (Branco)
+<<<<<<< HEAD
 CINZA="\[\033[38;5;247m\]"
+=======
+CINZA="\[\033[38;5;240m\]"
+>>>>>>> a9a22d737fc190a923478083138bb5d405297ee5
 
 #__## Efeito Negrito (bold) e cores
 #NPRETO="\[\033[1;30m\]" # Bold+Black (Negrito+Preto)
