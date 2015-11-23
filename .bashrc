@@ -1,11 +1,3 @@
-##SCREEN#########################
-if [ ! "$STY" ]
-then
-	exec screen -RR 
-fi
-#################################
-
-
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
@@ -15,6 +7,13 @@ case $- in
     *i*) ;;
       *) return;;
 esac
+
+##SCREEN#########################
+if [ ! "$STY" ]
+then
+	exec screen -RR 
+fi
+#################################
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
@@ -127,7 +126,7 @@ fi
 
 APS1=\
 "${debian_chroot:+($debian_chroot)}\
-{\$(first_c \u)}$NVERDE@$NENHUM\h$CINZA:\$(nobasename)\n\
+{\$(first_c \u)}$NVERDE@$NENHUM\h$CINZA:\$(nobasename)\$(lastcommand)\n\
 $NENHUM${NAZUL}\W$NENHUM\$(cbranch \"${CINZA} on $NENHUM$NAMARELO\")\
 $CINZA\$(backvim)$NENHUM$S_COLOR \\$ $NENHUM"
 
@@ -174,7 +173,6 @@ export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quo
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
-
 if [ -f ~/.bash_aliases ]; then
 	. ~/.bash_aliases
 fi
