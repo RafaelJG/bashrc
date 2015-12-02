@@ -125,8 +125,9 @@ else
 fi
 
 APS1=\
-"${debian_chroot:+($debian_chroot)}\
-{\$(first_c \u)}$NVERDE@$NENHUM\h$CINZA:\$(nobasename)\$(lastcommand)\n\
+"\$(erro \$?)\
+${debian_chroot:+($debian_chroot)}\
+{\$(first_c \u)}$NVERDE@$NENHUM\h$CINZA:\$(nobasename)\n\
 $NENHUM${NAZUL}\W$NENHUM\$(cbranch \"${CINZA} on $NENHUM$NAMARELO\")\
 $CINZA\$(backvim)$NENHUM$S_COLOR \\$ $NENHUM"
 
